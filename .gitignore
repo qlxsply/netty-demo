@@ -1,5 +1,4 @@
 # Default ignored files
 /workspace.xml
-
-/demo/*.iml
-.idea/*
+.idea/
+*.iml
