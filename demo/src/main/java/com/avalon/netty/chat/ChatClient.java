@@ -61,12 +61,11 @@ public class ChatClient {
                 SelectionKey key = iterator.next();
                 if (key.isReadable()) {
                     SocketChannel channel = (SocketChannel) key.channel();
-                    ByteBuffer buffer = ByteBuffer.allocate(2018);
+                    ByteBuffer buffer = ByteBuffer.allocate(1024);
                     try {
                         channel.read(buffer);
                     } catch (IOException e) {
                         System.out.println("当前通道获取数据异常！");
-                        e.printStackTrace();
                         try {
                             channel.close();
                         } catch (IOException ex) {

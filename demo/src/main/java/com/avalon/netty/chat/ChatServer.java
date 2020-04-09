@@ -78,7 +78,7 @@ public class ChatServer {
         //获取当前事件对应的socket管道
         SocketChannel channel = (SocketChannel) key.channel();
         //缓存
-        ByteBuffer byteBuffer = ByteBuffer.allocate(2048);
+        ByteBuffer byteBuffer = ByteBuffer.allocate(1025);
         //获取来源地址
         String address = "";
         try {
@@ -102,10 +102,10 @@ public class ChatServer {
         }
 
         if (read > 0) {
-            //获取缓冲区数据
-            String msg = new String(byteBuffer.array());
+            //获取缓冲区数据，byteBuffer中的数组未满则要移除多余的空字符
+            String msg = new String(byteBuffer.array()).trim();
             //
-            System.out.println("当前地址：" + address + "，当前读取消息：" + msg.trim());
+            System.out.println("当前地址：" + address + "，当前读取消息：" + msg);
             //转发
             this.send(msg, channel);
         }
