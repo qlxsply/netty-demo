@@ -13,7 +13,7 @@ public class NettyClient {
     public static void main(String[] args) {
 
         //客户端需要一个事件循环组
-        EventLoopGroup eventExecutors = new NioEventLoopGroup();
+        NioEventLoopGroup eventExecutors = new NioEventLoopGroup();
 
         try {
             //创建客户端启动对象
